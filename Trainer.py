@@ -13,6 +13,7 @@ Training data is stored as TrainingData.yml file in source folder to be used lat
 from PIL import Image
 import numpy as np
 import cv2
+import os
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()	#create recognizer as LBPHFaceRecognizer object from openCV library
 
@@ -38,6 +39,7 @@ def getImagesWithID(path):
 
 dataPath = "Dataset"
 ids, faces = getImagesWithID(dataPath)
+print(faces, "\n", ids)
 recognizer.train(faces, ids)	#recognizer is trained with faces and id list from dataset
 recognizer.save("trainingData.yml")	#save recognizer configuration as yml file
 cv2.destroyAllWindows()

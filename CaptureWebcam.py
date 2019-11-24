@@ -10,6 +10,7 @@ Faces are cropped and written to source/Dataset folder
 
 import numpy as np
 import cv2 		#importing opencv2 library for image processing functions
+import time
 
 #OBJECT DECLARATION
 faceCasc = cv2.CascadeClassifier("haar_face.xml")	#loading haar cascade for face detection
@@ -36,6 +37,8 @@ while True:		#infinite loop for showing webcam feed
 		cv2.imwrite("Dataset/User."+str(uid)+"."+str(imgNumber)+".jpg", gray[y:y+h, x:x+w])	#writing the cropped face image to Dataset Folder
 		#naming scheme for dataset: User.<userID>.<userImageNumber>.jpg 
 
+		print(str(imgNumber))
+		
 	if cv2.waitKey(100) & 0xFF == ord('q'):	break	#code to cut off camera feed when esc key is pressed
 	# if cv2.waitKey(1) == 27:break
 	elif(imgNumber > 30):	break	#also cut off webacm feed after 30 images of the faces are captured

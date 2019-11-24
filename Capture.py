@@ -14,12 +14,12 @@ for i in range(1, file_count):	#loop through all input images in folder "samples
 	# eye_casc = cv2.CascadeClassifier("haar_eye.xml")
 
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)	#make grayscale copy of image as gray
-	faces = face_casc.detectMultiScale(gray, 1.3, 5)	#detect faces on grayscale image and store in faces list
+	faces = face_casc.detectMultiScale(gray, 1.2, 5)	#detect faces on grayscale image and store in faces list
 
 
 	#faces list stores faces as starting co-ordinate of each face along with its width and height i.e. face1 = (x,y) and width w height h
 	for (x, y, w, h) in faces:	#loop through every face found in image
-		cv2.imwrite("Dataset/User."+str(faceCount)+".jpg", gray[y:y+h, x:x+w])	#cropped faces are saved in Dataset 
+		cv2.imwrite("DatasetY/User."+str(faceCount)+".jpg", gray[y:y+h, x:x+w])	#cropped faces are saved in Dataset 
 		cv2.rectangle(img, (x,y),(x+w,y+h),(255,0,0),3)	#displays rectangles over faces in input images
 		faceCount += 1	#facecounter
 
